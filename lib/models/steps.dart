@@ -1,5 +1,6 @@
 import 'package:meta/meta.dart';
 
+@immutable
 class Steps {
   final int steps;
   final DateTime date;
