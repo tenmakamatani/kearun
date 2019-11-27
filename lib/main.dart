@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:health/health.dart';
+import 'package:sqflite/sqflite.dart';
+
+import 'package:kearun/databases/steps_database_provider.dart';
 
 void main() => runApp(MaterialApp(
   title: 'test',
@@ -14,10 +16,10 @@ void main() => runApp(MaterialApp(
 class HealthWidget extends StatelessWidget {
 
   fetchData() async {
-    dynamic datas = await Health.getHealthDataFromType(DateTime.utc(2000, 1, 1), DateTime.now(), HealthDataType.STEPS);
-    datas.forEach((data) {
-      print(data.value);
-    });
+    StepsDatabaseProvider provider = StepsDatabaseProvider();
+    Database database = await provider.database;
+    final data = await database.rawQuery('SELECT * FROM steps');
+    print(data);
   }
 
   @override
