@@ -20,4 +20,14 @@ class Steps {
       assert(year != null),
       assert(month != null),
       assert(day != null);
+  
+  factory Steps.fromMap(Map<String, dynamic> map) {
+    return Steps(
+      steps: map['steps'],
+      date: map['date'],
+      year: map['year'],
+      month: map['month'],
+      day: map['day']
+    );
+  }
 }
