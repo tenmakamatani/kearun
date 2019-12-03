@@ -1,5 +1,5 @@
 import 'package:kearun/models/steps.dart';
 
-abstract class StepsRepository {
+abstract class StepsListRepository {
   Stream<List<Steps>> read();
 }
