@@ -13,7 +13,10 @@ class SqliteStepsListRepository extends StepsListRepository {
   @override
   Stream<List<Steps>> read() async* {
     final Database db = await _provider.database;
-    final steps = await db.query('steps');
-    yield steps.map((step) => Steps.fromMap(step));
+    final stepsList = await db.query('steps');
+    final List<Steps> stepsObjects = stepsList.map((steps) {
+      return Steps.fromMap(steps);
+    }).toList();
+    yield stepsObjects;
   }
 }
