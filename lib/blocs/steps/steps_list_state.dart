@@ -20,10 +20,13 @@ class StepsListLoading extends StepsListState {
 }
 
 class StepsListLoaded extends StepsListState {
-  final List<Steps> stepsList;
+  final Stream<List<Steps>> stepsList;
 
-  StepsListLoaded([this.stepsList = const []])
-    : super([stepsList]);
+  StepsListLoaded({
+    @required this.stepsList
+  })
+    : assert(stepsList != null),
+      super([stepsList]);
   
   @override
   String toString() => 'StepsListLoaded';
