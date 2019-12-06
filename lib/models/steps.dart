@@ -26,4 +26,13 @@ class Steps {
       day: map['day']
     );
   }
+
+  Object toMap() {
+    return {
+      steps: this.steps,
+      year: this.year,
+      month: this.month,
+      day: this.day
+    };
+  }
 }

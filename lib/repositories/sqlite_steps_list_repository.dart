@@ -19,4 +19,14 @@ class SqliteStepsListRepository extends StepsListRepository {
     }).toList();
     yield stepsObjects;
   }
+
+  @override
+  Future<void> create(Steps steps) async {
+    final Database db = await _provider.database;
+    try {
+      await db.insert('steps', steps.toMap());
+    } catch (_) {
+      print(_);
+    }
+  }
 }
