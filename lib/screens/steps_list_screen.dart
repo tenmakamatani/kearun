@@ -1,12 +1,20 @@
 import 'package:flutter/material.dart';
 
-import 'package:kearun/component/animated_text.dart';
+import 'package:kearun/repositories/get_steps.dart';
 
 class StepsListScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final double _screenWidth = MediaQuery.of(context).size.width;
     final double _screenHeight = MediaQuery.of(context).size.height;
+
+    Future<void> displaySteps() async {
+      final stepsData = await GetSteps.getSteps();
+      final steps = stepsData.map((each) {
+        return each.value;
+      });
+      print(steps);
+    }
 
     return Scaffold(
       body: Stack(
@@ -41,7 +49,7 @@ class StepsListScreen extends StatelessWidget {
                   ),
                   color: Theme.of(context).accentColor,
                   shape: CircleBorder(),
-                  onPressed: () {},
+                  onPressed: displaySteps,
                 ),
               ),
               margin: EdgeInsets.only(top: _screenHeight * 0.7),
@@ -59,10 +67,6 @@ class StepsListScreen extends StatelessWidget {
               width: _screenWidth * 0.75,
               margin: EdgeInsets.only(top: _screenHeight * 0.8),
             ),
-          ),
-          Container(
-            child: AnimatedText(),
-            margin: EdgeInsets.only(bottom: 500)
           )
         ],
       )
