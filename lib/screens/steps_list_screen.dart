@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:kearun/component/animated_text.dart';
+
 class StepsListScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -28,18 +30,21 @@ class StepsListScreen extends StatelessWidget {
           ),
           Center(
             child: Container(
-              child: Icon(
-                Icons.assignment,
-                color: Colors.white,
-                size: 80,
+              child: ButtonTheme(
+                minWidth: _screenWidth * 0.25,
+                height: _screenWidth * 0.25,
+                child: RaisedButton(
+                  child: Icon(
+                    Icons.assignment,
+                    color: Colors.white,
+                    size: _screenWidth * 0.2
+                  ),
+                  color: Theme.of(context).accentColor,
+                  shape: CircleBorder(),
+                  onPressed: () {},
+                ),
               ),
-              width: _screenWidth * 0.25,
-              height: _screenWidth * 0.25,
-              margin: EdgeInsets.only(top: 600),
-              decoration: BoxDecoration(
-                color: Theme.of(context).accentColor,
-                borderRadius: BorderRadius.circular(100)
-              ),
+              margin: EdgeInsets.only(top: _screenHeight * 0.7),
             ),
           ),
           Center(
@@ -54,6 +59,10 @@ class StepsListScreen extends StatelessWidget {
               width: _screenWidth * 0.75,
               margin: EdgeInsets.only(top: _screenHeight * 0.8),
             ),
+          ),
+          Container(
+            child: AnimatedText(),
+            margin: EdgeInsets.only(bottom: 500)
           )
         ],
       )
