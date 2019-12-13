@@ -14,14 +14,16 @@ class _TopState extends State<Top> {
   bool _visible = false;
 
   void _hangeVisible() {
-    setState(() {
-      this._visible = !this._visible;
-    });
-    final timer = Timer(Duration(seconds: 5), () => {
+    if (!this._visible) {
       setState(() {
         this._visible = !this._visible;
-      })
-    });
+      });
+      final timer = Timer(Duration(seconds: 5), () => {
+        setState(() {
+          this._visible = !this._visible;
+        })
+      });
+    }
   }
 
   @override
