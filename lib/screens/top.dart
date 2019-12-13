@@ -1,20 +1,33 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 
-import 'package:kearun/repositories/get_steps.dart';
+import 'package:kearun/component/callout.dart';
 
-class Top extends StatelessWidget {
+class Top extends StatefulWidget {
+  @override
+  _TopState createState() => _TopState();
+}
+
+class _TopState extends State<Top> {
+
+  bool _visible = false;
+
+  void _hangeVisible() {
+    setState(() {
+      this._visible = !this._visible;
+    });
+    final timer = Timer(Duration(seconds: 5), () => {
+      setState(() {
+        this._visible = !this._visible;
+      })
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     final double _screenWidth = MediaQuery.of(context).size.width;
     final double _screenHeight = MediaQuery.of(context).size.height;
-
-    Future<void> displaySteps() async {
-      final stepsData = await GetSteps.getSteps();
-      final steps = stepsData.map((each) {
-        return each.value;
-      });
-      print(steps);
-    }
 
     return Scaffold(
       body: Stack(
@@ -49,7 +62,7 @@ class Top extends StatelessWidget {
                   ),
                   color: Theme.of(context).accentColor,
                   shape: CircleBorder(),
-                  onPressed: displaySteps,
+                  onPressed: this._hangeVisible,
                 ),
               ),
               margin: EdgeInsets.only(top: _screenHeight * 0.7),
@@ -67,7 +80,8 @@ class Top extends StatelessWidget {
               width: _screenWidth * 0.75,
               margin: EdgeInsets.only(top: _screenHeight * 0.8),
             ),
-          )
+          ),
+          Callout(visible: this._visible),
         ],
       )
     );
