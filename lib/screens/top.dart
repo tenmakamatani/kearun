@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:kearun/repositories/get_steps.dart';
 
-class StepsListScreen extends StatelessWidget {
+class Top extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final double _screenWidth = MediaQuery.of(context).size.width;

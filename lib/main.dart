@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:kearun/services/background.dart';
 
-import 'package:kearun/screens/steps_list_screen.dart';
+import 'package:kearun/screens/top.dart';
 
 void main() {
   setUpBackgroundTask();
@@ -12,7 +12,7 @@ void main() {
 class App extends StatelessWidget {
   Widget build(BuildContext context) => MaterialApp(
     title: 'Kearun',
-    home: StepsListScreen(),
+    home: Top(),
     theme: ThemeData(
       accentColor: Colors.cyan[700]
     ),
